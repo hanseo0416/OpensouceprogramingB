@@ -14,7 +14,8 @@ import (
 func main() {
 	rand.Seed(time.Now().Unix())
 	target := rand.Intn(6) + 1
-	fmt.Println(target)
+
+	var win bool
 	for guesses := 0; guesses < 3; guesses++ {
 		fmt.Printf("%d번의 기회가 남았습니다. 숫자 입력 : ", 3-guesses)
 		in := bufio.NewReader(os.Stdin)
@@ -26,6 +27,7 @@ func main() {
 		guess, err := strconv.Atoi(input)
 		if target == guess {
 			fmt.Println("정답입니다!")
+			win = true
 			break
 		} else if target > guess {
 			fmt.Println("입력하신 값은 정답보다 작은 수 입니다. LOW")
@@ -33,6 +35,11 @@ func main() {
 			fmt.Println("입력하신 값은 정답보다 큰 수 입니다. HIGH")
 
 		}
-	}
 
+	}
+	if win {
+		fmt.Println("당신이 이겼습니다!")
+	} else {
+		fmt.Printf("당신이 졌습니다 정답은 %d입니다.", target)
+	}
 }

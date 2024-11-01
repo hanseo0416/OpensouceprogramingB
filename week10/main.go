@@ -24,20 +24,24 @@ func main() {
 		log.Fatal(err)
 	}
 
-	counts := 0
+	// counts := 0
+	var isPrime bool = true
 	if n <= 1 {
-		counts = -1
+		// counts = -1
+		isPrime = false
 	} else {
 		i := 2
 		for i < n {
 			if n%i == 0 {
-				counts = counts + 1
+				// counts = counts + 1
+				isPrime = false
 			}
 			i++
 		}
 	}
 
-	if counts == 0 {
+	// if counts == 0 {
+	if isPrime {
 		fmt.Printf("%d는(은) 소수입니다.", n)
 	} else {
 		fmt.Printf("%d는(은) 소수가 아닙니다!", n)

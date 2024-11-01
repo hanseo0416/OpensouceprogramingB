@@ -4,12 +4,14 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"math"
 	"os"
 	"strconv"
 	"strings"
 )
 
 func main() {
+	// fmt.Printf("%f\n", math.Sqrt(25.0))
 	fmt.Print("정수 입력 : ")
 	in := bufio.NewReader(os.Stdin)
 	number, err := in.ReadString('\n')
@@ -29,7 +31,8 @@ func main() {
 		isPrime = false
 	} else {
 		i := 2
-		for i < n {
+		for i <= int(math.Sqrt(float64(n))) {
+			//for i < n {
 			if n%i == 0 {
 				isPrime = false
 				break

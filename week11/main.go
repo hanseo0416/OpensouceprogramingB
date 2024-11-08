@@ -1,12 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"log"
-	"os"
-	"strconv"
-	"strings"
+	"week11/greeting"
+	"week11/keyboard"
 )
 
 func isPrime(n int) bool {
@@ -20,41 +18,28 @@ func isPrime(n int) bool {
 		i := 3
 		for i*i <= n {
 			if n%i == 0 {
-				// isPrime = false
-				// break
 				return false
 			}
-			// fmt.Printf("%d ", i)
 			i = i + 2
-
 		}
 	}
 	return true
-
 }
 
-func getInteger() int {
-
-	in := bufio.NewReader(os.Stdin)
-	a, err := in.ReadString('\n')
-
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	a = strings.TrimSpace(a)
-	number, err := strconv.Atoi(a)
-	if err != nil {
-		log.Fatal(err)
-	}
-	return number
-}
 func main() {
-	fmt.Print("첫번째 정수 입력 : ")
-	n1 := getInteger()
-	fmt.Print("두번째 정수 입력 : ")
-	n2 := getInteger()
-
+	// greeting.Hello("Inha")
+	// greeting.Hi("Harvard")
+	greeting.EnglishGreetings("Inha", "Harvard")
+	fmt.Print("첫 번째 정수(시작 값) 입력 : ")
+	n1, err := keyboard.GetInteger()
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Print("두 번째 정수(끝 값) 입력 : ")
+	n2, err := keyboard.GetInteger()
+	if err != nil {
+		log.Fatal(err)
+	}
 	for i := n1; i <= n2; i++ {
 		if isPrime(i) {
 			fmt.Printf("%d ", i)

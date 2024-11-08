@@ -33,8 +33,8 @@ func isPrime(n int) bool {
 
 }
 
-func main() {
-	fmt.Print("첫번째 정수 입력 : ")
+func getInteger() int {
+
 	in := bufio.NewReader(os.Stdin)
 	a, err := in.ReadString('\n')
 
@@ -43,24 +43,18 @@ func main() {
 	}
 
 	a = strings.TrimSpace(a)
-	n1, err := strconv.Atoi(a)
+	number, err := strconv.Atoi(a)
 	if err != nil {
 		log.Fatal(err)
 	}
-
+	return number
+}
+func main() {
+	fmt.Print("첫번째 정수 입력 : ")
+	n1 := getInteger()
 	fmt.Print("두번째 정수 입력 : ")
-	// in := bufio.NewReader(os.Stdin)
-	b, err := in.ReadString('\n')
+	n2 := getInteger()
 
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	b = strings.TrimSpace(b)
-	n2, err := strconv.Atoi(b)
-	if err != nil {
-		log.Fatal(err)
-	}
 	for i := n1; i <= n2; i++ {
 		if isPrime(i) {
 			fmt.Printf("%d ", i)
